@@ -1,0 +1,89 @@
+
+<div class="bx-form">
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+        <h2>EMPLOYEE DETAILS</h2>
+        <div class="form-row">
+        
+          <div class="col-md-6 mb-3">
+            <label for="role">Role</label>
+            <!--input type="text" class="form-control" id="role" formControlName="role" required-->
+            <select class="form-control" id="role" formControlName="role" required>
+              <option value="Admin">Admin</option>
+              <option value="Intern">Intern</option>
+              <option value="Trainee">Trainee</option>
+              <option value="sd">Senior Developer</option>
+              <option value="jd">Junior Developer</option>
+              <option value="Tester">Tester</option>
+              
+            </select>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="emp_id">Employee ID</label>
+            <input type="text" class="form-control" id="emp_id" formControlName="emp_id" required>
+          </div>
+          
+        </div>
+      
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+           
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" formControlName="name" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="image">Image URL</label>
+              <!--input type="file" class="form-control-file" id="image" (change)="onFileChange($event)" accept="image/*" formControlName="image"-->
+              <input type="file" id="image" (change)="onFileSelected($event)" name="image" />
+                            <small class="form-text text-muted">Attach an image for your profile picture (optional).</small>
+            </div>
+           
+        </div>
+      
+        <div class="form-row">
+    
+          <div class="col-md-6 mb-3">
+            <label for="age">Age</label>
+            <input type="number" class="form-control" id="age" formControlName="age" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="dob">Date of Birth</label>
+            <input type="date" class="form-control" id="dob" formControlName="dob" required>
+          </div>
+    
+           
+        </div>
+      
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="gender">Gender</label>
+            <select class="form-control" id="gender" formControlName="gender" required>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="bloodGroup">Blood Group</label>
+            <input type="text" class="form-control" id="bloodGroup" formControlName="bloodGroup">
+          </div>
+          </div>
+          <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="email">Email ID</label>
+            <input type="email" class="form-control" id="email" formControlName="email" required>
+          </div>
+       
+      
+        
+          <div class="col-md-6 mb-3">
+            <label for="mobileNumber">Mobile Number</label>
+            <input type="tel" class="form-control" id="mobileNumber" formControlName="mobileNumber" required>
+          </div>
+        </div>
+      
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary" [disabled]="!employeeForm.valid">Add Employee</button>
+        </div>
+      </form>
+    </div>
+    
+    

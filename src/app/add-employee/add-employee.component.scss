@@ -1,0 +1,53 @@
+.bx-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+}
+form {
+  margin: 20px;
+  height: auto;
+  width: 70%;
+  padding: 20px;
+ 
+  background-color: #ffffff;
+  border-radius:  0px 8px 8px 0px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h2{
+    text-align: center;
+}
+
+/* Add spacing between form controls */
+.form-row {
+  margin-bottom: 15px;
+}
+
+/* Style labels */
+label {
+  font-weight: bold;
+}
+
+/* Style the button */
+button {
+  margin-top: 10px;
+  background-image: linear-gradient(to right,rgb(0, 0, 0),rgb(47, 46, 46));
+    color: #fff;
+}
+
+/* Add a bit of padding to the form */
+form {
+  padding: 20px;
+}
+
+/* Optional: Style error messages for invalid form controls */
+.ng-invalid.ng-touched {
+  border: 1px solid #dc3545;
+}
+
+/* Optional: Style the required asterisk */
+.required-asterisk::after {
+  content: ' *';
+  color: #dc3545;
+}

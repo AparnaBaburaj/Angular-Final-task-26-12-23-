@@ -1,0 +1,69 @@
+.bx-home{
+    height: 600px;
+   // background-image: linear-gradient(to bottom, rgb(176, 174, 174),rgb(12, 12, 16));
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+.product-fhalf{
+    width: 50%;
+    margin-top: 40px;
+}
+img{
+    width: 90%;
+    height: 400px;
+   
+}
+
+.product-shalf{
+    width: 50%;
+   
+    display: flex;
+    flex-direction: column;
+    
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    
+h1{
+    color: black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding-top: 50px;
+}
+p{
+ 
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: black;
+}
+
+}
+button{
+    background-color: black;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 180px;
+    height: 35px;
+    border: none;
+    border-radius: 8px 8px 8px 8px;
+    margin-top: 30px;
+}
+button:hover{
+    background-color: rgb(167, 159, 159);
+    color: black;
+}
+.about-section {
+    
+    padding: 50px;
+    text-align: center;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-image: url("/assets/bg3.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }

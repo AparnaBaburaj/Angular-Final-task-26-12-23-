@@ -1,0 +1,36 @@
+
+<div class="table-container">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Leave Type</th>
+          <th>Start date</th>
+          <th>End Date</th>
+          <th>Reason</th>
+          <th>Leave Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let leave of employee_leaves">
+        <tr >
+        
+            <td>{{ leave.id }}</td>
+            <td>{{ leave.leaveType }}</td>
+            <td>{{ leave.startDate }}</td>
+            <td>{{ leave.endDate }}</td>
+            <td>{{ leave.reason }}</td>
+            <td>{{ leave.leaveStatus }}</td>  <td>
+            <button class="approve-btn" *ngIf="leave.leaveStatus === 'Pending'" (click)="approveLeave(leave.id)">
+              Approve
+            </button>
+            <button class="reject-btn" *ngIf="leave.leaveStatus === 'Pending'" (click)="rejectLeave(leave.id)">
+              Reject
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+

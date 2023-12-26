@@ -1,0 +1,51 @@
+<div class="about-section">
+  <h1>Employee 360</h1>
+  <p>Some text about who we are and what we do.</p>
+  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt voluptatibus rem excepturi sit eos eum necessitatibus aperiam error.</p>
+</div>
+<div style="display: flex;flex-direction: row;text-align: center;justify-content: center;align-items: center;background-color: rgb(252, 252, 252);">
+    <div class="bx-dchart">
+      <h2>Employee Status </h2>
+        <canvas id="doughnutChart" width="50%" height="50%" ></canvas>
+      </div>
+    
+      <div class="bx-barchart">
+        <h2>Leave History</h2>
+        <canvas id="barChart" width="200px" height="200px"></canvas>
+      </div>
+    </div>
+
+    <div class="table-container">
+      <h3>Employee Leave Applications</h3>
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Leave Type</th>
+            <th>Start date</th>
+            <th>End Date</th>
+            <th>Reason</th>
+            <th>Leave Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let leave of employee_leaves">
+          <tr >
+          
+              <td>{{ leave.id }}</td>
+              <td>{{ leave.leaveType }}</td>
+              <td>{{ leave.startDate }}</td>
+              <td>{{ leave.endDate }}</td>
+              <td>{{ leave.reason }}</td>
+              <td>{{ leave.leaveStatus }}</td>  <td>
+              <button class="approve-btn" *ngIf="leave.leaveStatus === 'Pending'" (click)="approveLeave(leave.id)">
+                Approve
+              </button>
+              <button class="reject-btn" *ngIf="leave.leaveStatus === 'Pending'" (click)="rejectLeave(leave.id)">
+                Reject
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>

@@ -1,0 +1,35 @@
+.bx-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+form {
+    margin: 20px;
+    width: 70%;
+    background-color: #fff;
+  margin-top: 6%;
+    padding: 20px;
+  border-radius:  0px 8px 8px 0px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  h2{
+    text-align: center;
+  }
+  
+  /* Style labels */
+  label {
+    font-weight: bold;
+  }
+  
+  /* Style the button */
+  button {
+    margin-top: 10px;
+    background-image: linear-gradient(to right,rgb(0, 0, 0),rgb(47, 46, 46));
+    color: #fff;
+  }
+  
+  /* Optional: Style error messages for invalid form controls */
+  .ng-invalid.ng-touched {
+    border: 1px solid #dc3545;
+  }

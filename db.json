@@ -1,0 +1,105 @@
+{
+  "employees": [
+    {
+      "role": "Intern",
+      "name": "Aparna TB",
+      "age": "26",
+      "dob": "1997-11-13",
+      "image": "",
+      "bloodGroup": "A+",
+      "gender": "female",
+      "email": "aparnababuraj121@gmail.com",
+      "mobileNumber": "+918606429695",
+      "id": 4
+    },
+    {
+      "role": "Junior Developer",
+      "emp_id": "emp101",
+      "name": "Soja Naduthodi",
+      "age": 26,
+      "dob": "1997-10-24",
+      "image": {},
+      "bloodGroup": "A+",
+      "gender": "female",
+      "email": "sojan@gmail",
+      "mobileNumber": "08606429695",
+      "password": "hpdxvxgw",
+      "id": 5
+    },
+    {
+      "role": "Junior Developer",
+      "emp_id": "emp104",
+      "name": "Sreekanth",
+      "age": 32,
+      "dob": "1991-06-13",
+      "image": {},
+      "bloodGroup": "O+",
+      "gender": "male",
+      "email": "Sreekanth@gmail.coom",
+      "mobileNumber": "9744176050",
+      "password": "hchwdv7a",
+      "id": 6
+    },
+    {
+      "role": "Intern",
+      "emp_id": "emp110",
+      "name": "Anandhu",
+      "age": 24,
+      "dob": "2023-11-26",
+      "image": {},
+      "bloodGroup": "A+",
+      "gender": "male",
+      "email": "anandhu@gmail.com",
+      "mobileNumber": "9966554488",
+      "password": "xt4ltxol",
+      "id": 13
+    },
+    {
+      "role": "Intern",
+      "emp_id": "emp111",
+      "name": "Vishnu",
+      "age": 25,
+      "dob": "2023-11-27",
+      "image": {},
+      "bloodGroup": "B+",
+      "gender": "male",
+      "email": "aaa@hh.com",
+      "mobileNumber": "08606429695",
+      "password": "65hihed1",
+      "id": 14
+    }
+  ],
+  "employee_leaves": [
+    {
+      "leaveType": "annual",
+      "startDate": "2023-12-20",
+      "endDate": "2023-12-22",
+      "reason": "zsczz",
+      "id": 4,
+      "leaveStatus": "Rejected"
+    },
+    {
+      "leaveType": "annual",
+      "startDate": "2024-01-02",
+      "endDate": "2024-01-05",
+      "reason": "trip",
+      "leaveStatus": "Rejected",
+      "id": 5
+    },
+    {
+      "leaveType": "annual",
+      "startDate": "2024-01-02",
+      "endDate": "2024-01-05",
+      "reason": "trip",
+      "leaveStatus": "Rejected",
+      "id": 6
+    }
+  ],
+  "notifications": [
+    {
+      "id": 0,
+      "message": "meeting",
+      "date": "12-12-23"
+    }
+  ]
+}

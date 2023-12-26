@@ -1,0 +1,35 @@
+<div *ngIf="employee">
+    <div class="profile-container">
+        <div class="profile-header">
+            
+          <!--img class="profile-picture" [src]="employee.image" alt="{{ employee.name }}'s Profile Picture" /-->
+          <img src="assets/img8.jpg" alt="" class="profile-picture" >
+        <div style="display: flex;flex-direction: row;text-align: center;align-items: center;justify-content:center; ">
+          <h1>{{ employee.name }}</h1>
+          <div class="edit-profile-icon" (click)="editProfile()" style="margin-left: 10px;">
+            <i class="fa fa-edit"></i>
+          </div>
+        </div>
+          <p class="job-title">{{ employee.role }}</p>
+        </div>
+      
+        <div class="profile-details">
+          <h2>Details</h2>
+          <ul>
+            <li><strong>ID:</strong> {{ employee.id }}</li>
+            <li><strong>Age:</strong> {{ employee.age }}</li>
+            <li><strong>DOB:</strong> {{ employee.dob }}</li>
+            <li><strong>Email:</strong> {{ employee.email }}</li>
+            <li><strong>Mobile Number:</strong> {{ employee.mobileNumber }}</li>
+            <!-- Add more details as needed -->
+          </ul>
+        </div>
+      
+        
+      </div>
+  </div>
+  
+  <div *ngIf="!employee">
+    <p>Loading...</p>
+  </div>
+

@@ -1,0 +1,32 @@
+
+<div class="bx-form">
+    <form [formGroup]="leaveForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+        <h2>Leave Application</h2>
+        <div class="form-group">
+          <label for="leaveType">Type of Leave</label>
+          <select class="form-control" id="leaveType" formControlName="leaveType" required>
+            <option value="" disabled>Select Leave Type</option>
+            <option value="annual">Annual Leave</option>
+            <option value="sick">Sick Leave</option>
+          </select>
+        </div>
+      
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="startDate">Start Date</label>
+            <input type="date" class="form-control" id="startDate" formControlName="startDate" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="endDate">End Date</label>
+            <input type="date" class="form-control" id="endDate" formControlName="endDate" required>
+          </div>
+        </div>
+      
+        <div class="form-group">
+          <label for="reason">Reason for Leave</label>
+          <textarea class="form-control" id="reason" rows="4" formControlName="reason" required></textarea>
+        </div>
+      
+        <button type="submit" class="btn btn-primary" [disabled]="!leaveForm.valid">Submit Leave Application</button>
+      </form>
+    </div>
