@@ -10,44 +10,53 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-admin-home',
   standalone: true,
   imports: [CommonModule,HttpClientModule],
-  providers:[OtherService],
+  providers:[OtherService,LoginServiceService],
   templateUrl: './admin-home.component.html',
   styleUrl: './admin-home.component.scss'
 })
 export class AdminHomeComponent {
 
+  //Initialization
   doughnutChart: any;
   barChart: any;
 
   employee_leaves: any[] = [];
   http=inject(HttpClient);
-  constructor(private employeeService: OtherService,private route: ActivatedRoute,) {}
+
+  constructor(private employeeService: OtherService,private route: ActivatedRoute,private login:LoginServiceService) {}
 
   ngOnInit() {
+
+  //loading functions
+
     this.createDoughnutChart();
     this.createBarChart();
     this.loadEmployees();
   }
 
+  // loading the leave applications
   loadEmployees() {
     this.employeeService.getLeaveApplications().subscribe((data) => {
       this.employee_leaves = data;
       console.log(data);
     });
   }
+
+   // upadate status when clicking approved
   approveLeave(employeeId: number) {
     this.employeeService.updateLeaveStatus(employeeId, 'Approved').subscribe(() => {
       this.loadEmployees();
     
     });
   }
-
+ // upadate status when clicking rejected
   rejectLeave(employeeId: number) {
     this.employeeService.updateLeaveStatus(employeeId, 'Rejected').subscribe(() => {
       this.loadEmployees();
     });
   }
 
+  // Create Doughnut Chart for active and in-active employees
   createDoughnutChart() {
     const ctx = document.getElementById('doughnutChart') as HTMLCanvasElement;
     this.doughnutChart = new Chart(ctx, {
@@ -55,7 +64,7 @@ export class AdminHomeComponent {
       data: {
         labels: ['Active Employees', 'Inactive Employees'],
         datasets: [{
-          data: [70,30],
+          data: [70,30], // Example data: replace with actual leave data
           backgroundColor: ['rgba(0,0,0, 0.8)', 'rgba(84, 81, 81, 0.5)'],
           borderWidth: 1,
        
@@ -66,6 +75,7 @@ export class AdminHomeComponent {
   
   }
  
+  //Create Bar chart for leave history  of employees
 
   createBarChart() {
     const ctx = document.getElementById('barChart') as HTMLCanvasElement;

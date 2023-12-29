@@ -1,6 +1,6 @@
 <div >
   <header>
-
+<!--Navigation Bar-->
     <nav >
       <div class="nav-first">
         <img src="assets/icc.png" alt="" style="width: 40px;height: 40px;">
@@ -8,15 +8,20 @@
       </div>
       <div class="nav-second">
        <a routerLink="/login" *ngIf="!isAuthenticated">Login</a>
+
+       <!--Admin Dashboard-->
       <a *ngIf="isAuthenticated()" (click)="form1()">Home</a>
-      <a *ngIf="isUserAuthenticated()" (click)="form5()">Home</a>
       <a *ngIf="isAuthenticated()" (click)="form2()">Employee Details</a>
       <a *ngIf="isAuthenticated()" (click)="form3()">Add Employee</a>
+      <li><a (click)="logout()" *ngIf="isAuthenticated()">Logout</a></li>
+
+      <!--User Dashboard-->
+      <a *ngIf="isUserAuthenticated()" (click)="form5()">Home</a>
       <a *ngIf="isUserAuthenticated()" (click)="form7()">My Leaves</a>
       <a *ngIf="isUserAuthenticated()" (click)="form4()">Apply Leave</a>
       <a *ngIf="isUserAuthenticated()" (click)="form6()">My Profile</a>
       <li><a (click)="logout()" *ngIf="isUserAuthenticated()">Logout</a></li>
-      <li><a (click)="logout()" *ngIf="isAuthenticated()">Logout</a></li>
+     
       </div>
     
     </nav>
@@ -24,6 +29,8 @@
 
   <router-outlet></router-outlet>
 
+
+<!--Footer-->
   <footer>
     <p>Copyright © 2022 - 23 Employee 360</p>
   </footer>

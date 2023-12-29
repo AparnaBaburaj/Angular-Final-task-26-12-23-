@@ -31,8 +31,8 @@
                 <button  (click)="viewLeaveDetails(employee.id)">Leave Details</button>
               </td>
                 <td>
-                <button (click)="editEmployee(employee.id)"><i class="fa fa-edit"></i></button>
-                <button class="btn-dlt" (click)="deleteEmployee(employee.id)"><i class="fa fa-trash"></i></button>
+                <button (click)="editEmployee(employee.id)"><i class="fa fa-edit"></i></button> <!--button for edit pofile-->
+                <button class="btn-dlt" (click)="deleteEmployee(employee.id)"><i class="fa fa-trash"></i></button><!--button for delete employee-->
               </td>
              
               
@@ -40,6 +40,6 @@
       </tbody>
     </table>
   </div>
-  <div *ngIf="employees.length === 0" class="no-data-message">No employees available</div>
+  <div *ngIf="employees.length === 0" class="no-data-message">No employees available</div> <!--Display this message when no data is available-->
 
 

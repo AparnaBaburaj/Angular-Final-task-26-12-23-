@@ -1,20 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { OtherService } from '../other.service';
 import Swal, { SweetAlertResult } from 'sweetalert2';
 import { CommonModule, FormStyle } from '@angular/common';
 import { RouterModule, RouterOutlet } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { LoginServiceService } from '../login-service.service';
 
 @Component({
   selector: 'app-leave-application',
   standalone: true,
   imports: [CommonModule,FormsModule,RouterModule,RouterOutlet,HttpClientModule,ReactiveFormsModule],
-  providers:[OtherService],
+  providers:[OtherService,HttpClientModule,HttpClient,LoginServiceService],
   templateUrl: './leave-application.component.html',
   styleUrl: './leave-application.component.scss'
 })
 export class LeaveApplicationComponent {
+
+  //Initialization
+  http=inject(HttpClient);
 
   leaveForm!: FormGroup;
 
@@ -32,7 +36,7 @@ export class LeaveApplicationComponent {
   }
   async onSubmit(): Promise<void> {
     if (this.leaveForm.valid) {
-      const result = await this.showDeleteConfirmation();
+      const result = await this.showLeaveConfirmation();
       if (result.isConfirmed) {
         Swal.fire('Sent!', 'Leave Application Submitted.', 'success');
         const leaveApplication = this.leaveForm.value;
@@ -44,14 +48,16 @@ export class LeaveApplicationComponent {
           (error: any) => {
             console.error('Error submitting leave application:', error);
           }
-        );  console.log('Employee Added:', leaveApplication);
+        );  console.log('Leave submitted:', leaveApplication);
      }
     }
   }
+
+  //reset the form after submission
   private resetForm(): void {
     this.leaveForm.reset();
   }
-  private showDeleteConfirmation(): Promise<SweetAlertResult> {
+  private showLeaveConfirmation(): Promise<SweetAlertResult> {
     return Swal.fire({
       title: 'Are you sure?',
       text: 'You won\'t be able to revert this!',
@@ -63,6 +69,7 @@ export class LeaveApplicationComponent {
     });
   }
 
+  //Call deactivate guard
   canDeactivate(): boolean {
     if (this.isFormDirty()) {
       return window.confirm('Are you sure want to redirect');

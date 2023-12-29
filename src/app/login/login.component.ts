@@ -15,11 +15,14 @@ import Swal, { SweetAlertResult } from 'sweetalert2';
 })
 export class LoginComponent {
 
+  //Initialization
   username = '';
   password = '';
 
   constructor(private authService: LoginServiceService, private router:Router) {}
 
+
+  //login fuction
   async login(): Promise<void> {
     if (this.authService.login(this.username, this.password)) {
       if (this.authService.getUserRole() === 'admin') {
@@ -28,7 +31,7 @@ export class LoginComponent {
         this.router.navigate(['/employee-home']);
       }
     } else {
-      const result = await this.showDeleteConfirmation();
+      const result = await this.showInvalidConfirmation();
       if (result.isConfirmed) {
         this.username='';
         this.password=''
@@ -37,7 +40,8 @@ export class LoginComponent {
     }
   }
 
-  private showDeleteConfirmation(): Promise<SweetAlertResult> {
+
+  private showInvalidConfirmation(): Promise<SweetAlertResult> {
     return Swal.fire({
       title: 'Invalid Credentials!!',
       text: 'Please check your username or password',

@@ -18,6 +18,7 @@ export class AddEmployeeComponent {
 
   employeeForm!: FormGroup;
   previewImage: string | ArrayBuffer | null = null;
+  selectedFile: File | null = null;
 
   http=inject(HttpClient);
 
@@ -45,30 +46,15 @@ export class AddEmployeeComponent {
     });
   }
 
+  //File selection
   onFileSelected(event: any): void {
-    const file = (event.target as HTMLInputElement).files?.[0];
-    this.employeeForm.patchValue({ image: file });
-    this.employeeForm.get('image')?.setValue(file);
-    console.log("image",file);
+    this.selectedFile = event.target.files[0];
+    console.log("ok",this.selectedFile);
   }
-  /*onFileChange(event: any): void {
-    const file = event.target.files?.[0];
-  
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.previewImage = reader.result;
-      };
-      reader.readAsDataURL(file);
-  
-      this.employeeForm.get('image')?.setValue(file);
-    }
-  
-  }*/
-
+ 
   async onSubmit(): Promise<void> {
     if (this.employeeForm.valid) {
-      const result = await this.showDeleteConfirmation();
+      const result = await this.showConfirmation();
       if (result.isConfirmed) {
         Swal.fire('Added!', 'New Employee Added.', 'success');
         const leaveApplication = this.employeeForm.value;
@@ -89,7 +75,10 @@ export class AddEmployeeComponent {
     this.employeeForm.reset();
     this.previewImage = null;
   }
-  private showDeleteConfirmation(): Promise<SweetAlertResult> {
+
+  //Alert Box(using sweetAlert)
+
+  private showConfirmation(): Promise<SweetAlertResult> {
     return Swal.fire({
       title: 'Are you sure?',
       text: 'You won\'t be able to revert this!',
@@ -101,6 +90,7 @@ export class AddEmployeeComponent {
     });
   }
 
+  // Deactivate Guard
   canDeactivate(): boolean {
     if (this.isFormDirty()) {
       return window.confirm('Are you sure want to redirect');
@@ -115,8 +105,10 @@ export class AddEmployeeComponent {
     );
   }
 
+  // Generate a random password for users
+
   private generateRandomPassword(): string {
-    // Your logic to generate a random password (customize as needed)
+ 
     const randomPassword = Math.random().toString(36).slice(-8);
     return randomPassword;
   }

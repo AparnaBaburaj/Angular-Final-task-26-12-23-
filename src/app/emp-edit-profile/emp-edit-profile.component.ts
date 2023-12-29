@@ -10,7 +10,6 @@ import Swal from 'sweetalert2';
 interface Employee {
   id: number;
   role: string;
-  
   name: string;
   image: string;
   age:number;
@@ -31,7 +30,8 @@ interface Employee {
 })
 export class EmpEditProfileComponent {
 
-  employee!: Employee;
+  //employee!: any;
+  employee: any = {};
   
 
   constructor(
@@ -50,6 +50,8 @@ export class EmpEditProfileComponent {
     });
   }
 
+  //Load employee Details
+
   private loadEmployeeData(employeeId: number): void {
     this.employeeService.getEmployeeById(employeeId).subscribe(
       (employee: Employee) => {
@@ -61,6 +63,8 @@ export class EmpEditProfileComponent {
     );
   }
 
+  //Update employee details
+  
   saveChanges(): void {
     this.employeeService.updateEmployee(this.employee).subscribe(
       updatedEmployee => {

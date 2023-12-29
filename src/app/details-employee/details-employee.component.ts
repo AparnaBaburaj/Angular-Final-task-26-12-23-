@@ -25,29 +25,29 @@ export class DetailsEmployeeComponent {
     this.loadEmployees();
   }
 
+  //To Load all employee details
   loadEmployees() {
     this.employeeService.getEmployees().subscribe((data) => {
       this.employees = data;
     });
   }
+
+  // navigate to leave details page
+
   viewLeaveDetails(employeeId: number) {
-   // this.routes.navigate(['/leave-details',employeeId]);
    this.routes.navigate(['/leave-details',employeeId]);
 }
 
+  // navigate to edit profile page
+
 editEmployee(employeeId:number) {
-  // Implement logic to navigate or open an edit form for the selected employee
- // console.log(`Editing employee ${employeeId}`);
+ 
   this.routes.navigate(['/employee-edit',employeeId]);
 }
+ // Delete employee function
 
   async deleteEmployee(employeeId:number) {
-  // Implement logic to confirm deletion and delete the employee
-  //const confirmDelete = confirm(`Delete ${employeeId}?`);
-  const confirmDelete = await this.showDeleteConfirmation();
-  //if (confirmDelete.isConfirmed) {
-    
-   
+  const confirmDelete = await this.showDeleteConfirmation(); 
   if (confirmDelete.isConfirmed) {
     // Call a service method to delete the employee
     Swal.fire('Deleted!', 'Employee Deleted.', 'success');
@@ -58,6 +58,8 @@ editEmployee(employeeId:number) {
   }
 
 }
+
+//Confirm box for delete(SweetAlert)
 private showDeleteConfirmation(): Promise<SweetAlertResult> {
   return Swal.fire({
     title: 'Are you sure?',

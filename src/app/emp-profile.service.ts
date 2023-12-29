@@ -25,11 +25,13 @@ export class EmpProfileService {
 
   constructor(private http: HttpClient) {}
 
+     //To get employee details by id
+
   getEmployeeById(employeeId: number): Observable<Employee> {
     const url = `${this.apiUrl}/${employeeId}`;
     return this.http.get<Employee>(url);
   }
-
+   //update employee pofile
   updateEmployee(employee: Employee): Observable<Employee> {
     const url = `${this.apiUrl}/${employee.id}`;
     return this.http.put<Employee>(url, employee);

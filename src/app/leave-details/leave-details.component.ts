@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { OtherService } from '../other.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
+import Swal from 'sweetalert2';
 
 export interface Leave {
   id: number;
@@ -26,26 +27,22 @@ export interface Leave {
 export class LeaveDetailsComponent {
  employee_leaves: any[] = [];
   http=inject(HttpClient);
- // employee_leaves!: Leave[];
+
   
 
   constructor(private employeeService: OtherService,private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    //this.loadEmployees();
+    
     this.route.params.subscribe(params => {
       const employeeId = +params['id'];
-      //const employeeId=4;
+      
       this.loadEmployees(employeeId);
     });
     
   }
-  /*loadEmployees() {
-    this.employeeService.getLeaveApplications().subscribe((data) => {
-      this.employee_leaves = data;
-      console.log(data);
-    });
-  }*/
+
+  //Load leave details
 
    loadEmployees(employeeId:number): void {
     this.employeeService.getLeaveApplicationsbyUser(employeeId).subscribe((data)  => {
@@ -55,53 +52,22 @@ export class LeaveDetailsComponent {
   }
   
 
+   // upadate status when clicking approved
   approveLeave(employeeId: number) {
     this.employeeService.updateLeaveStatus(employeeId, 'Approved').subscribe(() => {
+      Swal.fire('Approved!', 'Leave Approved', 'success');
       this.loadEmployees(employeeId);
     
     });
   }
 
+   // upadate status when clicking rejected
   rejectLeave(employeeId: number) {
     this.employeeService.updateLeaveStatus(employeeId, 'Rejected').subscribe(() => {
+      Swal.fire('Rejected!', 'Leave Rejected', 'success');
       this.loadEmployees(employeeId);
+
     });
   }
- /* employeeId!: number;
-  leaveDetails!: Leave[];
-
-  constructor(
-    private route: ActivatedRoute,
-    private employeeService: OtherService
-  ) {}
-
-  ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      this.employeeId = +params['id'];
-      this.loadLeaveDetails();
-    });
-  }
-
-  loadLeaveDetails(): void {
-    this.employeeService.getLeaveApplicationsbyUser(this.employeeId).subscribe(
-      (leaveDetails) => {
-        console.log("id:",this.employeeId);
-        leaveDetails =leaveDetails;
-       
-      },
-      (error) => {
-        console.error('Error loading leave details', error);
-      }
-    );
-  }
-
-  approveLeave(leaveId: number): void {
-    // Implement logic to update leave status as "approved"
-    console.log(`Leave ${leaveId} approved.`);
-  }
-
-  rejectLeave(leaveId: number): void {
-    // Implement logic to update leave status as "rejected"
-    console.log(`Leave ${leaveId} rejected.`);
-  }*/
+ 
 }

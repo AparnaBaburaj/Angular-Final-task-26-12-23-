@@ -6,13 +6,12 @@
         
           <div class="col-md-6 mb-3">
             <label for="role">Role</label>
-            <!--input type="text" class="form-control" id="role" formControlName="role" required-->
             <select class="form-control" id="role" formControlName="role" required>
               <option value="Admin">Admin</option>
               <option value="Intern">Intern</option>
               <option value="Trainee">Trainee</option>
-              <option value="sd">Senior Developer</option>
-              <option value="jd">Junior Developer</option>
+              <option value="Senior Developer">Senior Developer</option>
+              <option value="Junior Developer">Junior Developer</option>
               <option value="Tester">Tester</option>
               
             </select>
@@ -32,8 +31,7 @@
             </div>
             <div class="col-md-6 mb-3">
               <label for="image">Image URL</label>
-              <!--input type="file" class="form-control-file" id="image" (change)="onFileChange($event)" accept="image/*" formControlName="image"-->
-              <input type="file" id="image" (change)="onFileSelected($event)" name="image" />
+              <input type="file" accept="image/" (change)="onFileSelected($event)" #fileInput  formControlName="image"/>
                             <small class="form-text text-muted">Attach an image for your profile picture (optional).</small>
             </div>
            

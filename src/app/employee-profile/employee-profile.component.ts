@@ -46,6 +46,8 @@ export class EmployeeProfileComponent {
     });
   }
 
+  //Load employee Details
+
   private loadEmployeeData(employeeId: number): void {
     this.employeeService.getEmployeeById(employeeId).subscribe(
       (employee: Employee) => {
@@ -57,6 +59,7 @@ export class EmployeeProfileComponent {
     );
   }
 
+  //navigate to edit profile page
   editProfile(): void {
    
     this.router.navigate(['/employee-edit',this.employeeId]);

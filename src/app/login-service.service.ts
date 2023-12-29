@@ -11,10 +11,9 @@ export class LoginServiceService {
 
   constructor() { }
 
-
+//login function
   login(username: string, password: string): boolean {
-    // Your authentication logic here
-    // For simplicity, let's use a basic username and password check
+   
     if (username === 'admin' && password === 'admin') {
       this.isAuthenticated = true;
       this.userRole = 'admin';
@@ -27,19 +26,24 @@ export class LoginServiceService {
     return false;
   }
 
+  //logout
 
   logout(): void {
     this.isAuthenticated = false;
-  
-    //this.userRole = null;
+
   }
 
+  //Authentication for admin
   isAuthenticatedUser(): boolean {
     if(this.userRole=='admin'){
     return this.isAuthenticated;
   }
   return false;
   }
+
+
+  //Authentication for user
+
   isAuthenticatedUser1():boolean{
     if(this.userRole=='user'){
       return this.isAuthenticated;
@@ -47,6 +51,7 @@ export class LoginServiceService {
     return false;
   }
 
+  //to get the user role
   getUserRole(): string | null {
     return this.userRole;
   }

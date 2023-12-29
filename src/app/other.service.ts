@@ -33,70 +33,51 @@ export interface Employee {
 })
 export class OtherService {
 
+
+  //Initialization
+
   private apiUrl = 'http://localhost:3000';
 
   private empDetails: any[] = [];
 
   constructor(private http: HttpClient) {}
 
+
+
    //employee add
   addEmployee(data: Employee): Observable<any> {
 
-    /*const formData = new FormData();
-    formData.append('name', data.name);
-    formData.append('role', data.role);
-    formData.append('image', data.image);
-    formData.append('emp_id', data.emp_id);
-    formData.append('age', data.age);
-    formData.append('dob', data.dob);
-    formData.append('bloodGroup', data.bloodGroup);
-    formData.append('gender', data.gender);
-    formData.append('email', data.email);
-    formData.append('mobileNumber', data.mobileNumber);
-    formData.append('password', data.password);*/
-  
     return this.http.post(`${this.apiUrl}/employees`, data);
+
   }
 
 
  //To get All employee details
   getEmployees(): Observable<any[]> {
+
     return this.http.get<any[]>(`${this.apiUrl}/employees`);
-  }
-  getNotifications(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/notifications`);
+
   }
 
 
   //leave application
-
-
-
-
-  private leaveApplications: any[] = [];
-
-
-
-
   addLeaveApplication(data: any): Observable<any> {
 
      return this.http.post(`${this.apiUrl}/employee_leaves`, data);
+
   }
 
    //To get All leave details
 
   getLeaveApplications():  Observable<any[]> {
-    //return this.http.get<any[]>(`${this.apiUrl}/employee_leaves/${employeeId}`);
-    //const url = `${this.apiUrl}/employee_leaves`;
+   
     const id=4;
     return this.http.get<any[]>(`${this.apiUrl}/employee_leaves?`);
   }
 
- 
+    //To get All leave details by user
   getLeaveApplicationsbyUser(employeeId: number): Observable<Leave[]> {
-   // return this.http.get<any[]>(`${this.apiUrl}/employee_leaves/${employeeId}`);
-   //const url = `${this.apiUrl}/employee_leaves/${employeeId}`;
-   //return this.http.get<Leave[]>(url);
+
    return this.http.get<any[]>(`${this.apiUrl}/employee_leaves?id=${employeeId}`);
   
     
@@ -110,13 +91,13 @@ export class OtherService {
   }
 
 
- //Delete Employee leave status
+ //Delete Employee 
 
   deleteEmployee(employeeId: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/employees/${employeeId}`);
   }
 
-
+   //To get employee details by user
   getEmployeeById(employeeId: number): Observable<void> {
     return this.http.get<void>(`${this.apiUrl}/employees/${employeeId}`);
   }
@@ -124,7 +105,7 @@ export class OtherService {
   getLeavesById(employeeId: number): Observable<any> {
     return this.http.get<void>(`${this.apiUrl}/employee_leaves/${employeeId}`);
   }
-
+   //To update employee profile
   updateEmployee(employeeId: number, updatedEmployee: String): Observable<void> {
     return this.http.put<void>(`${this.apiUrl}/employees/${employeeId}`, updatedEmployee);
   }
